@@ -6,8 +6,6 @@ const AnecdoteList = () => {
   const { vote, remove } = useAnecdoteActions()
   const { setNotification } = useNotificationActions()
 
-  const sortedAnecdotes = anecdotes.toSorted((a, b) => b.votes - a.votes)
-
   const handleVote = (anecdote) => {
     vote(anecdote.id)
     setNotification(`you voted '${anecdote.content}'`)
