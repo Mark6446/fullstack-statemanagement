@@ -1,10 +1,17 @@
 import { useAnecdotes, useAnecdoteActions } from '../store'
+import { useNotificationActions } from '../notificationStore'
 
 const AnecdoteList = () => {
   const anecdotes = useAnecdotes()
-  const { vote } = useAnecdoteActions()
-
+  const { vote, remove } = useAnecdoteActions()
+  const { setNotification } = useNotificationActions()
+  
   const sortedAnecdotes = anecdotes.toSorted((a, b) => b.votes - a.votes)
+
+  const handleVote = (anecdote) => {
+    vote(anecdote.id)
+    setNotification(`You voted '${anecdote.content}'`)
+  }
 
   return (
     <div>
@@ -15,7 +22,11 @@ const AnecdoteList = () => {
           </div>
           <div>
             has {anecdote.votes}
-            <button onClick={() => vote(anecdote.id)}>vote</button>
+            <button onClick={() => handleVote(anecdote)}>vote</button>
+            {/* Solo mostramos el botón de borrar si tiene 0 votos */}
+            {anecdote.votes === 0 && (
+              <button onClick={() => remove(anecdote.id)}>delete</button>
+            )}
           </div>
         </div>
       ))}
