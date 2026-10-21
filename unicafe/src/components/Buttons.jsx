@@ -1,10 +1,14 @@
+import { useUnicafeActions } from '../store'
+
 const Buttons = () => {
+  const { incrementGood, incrementNeutral, incrementBad, resetStats } = useUnicafeActions()
+
   return (
     <div>
-      <h2>give feedback</h2>
-      <button>good</button>
-      <button>neutral</button>
-      <button>bad</button>
+      <button onClick={incrementGood}>good</button>
+      <button onClick={incrementNeutral}>neutral</button>
+      <button onClick={incrementBad}>bad</button>
+      <button onClick={resetStats}>reset stats</button>
     </div>
   )
 }

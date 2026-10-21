@@ -3,11 +3,12 @@ import Statistics from './components/Statistics'
 
 const App = () => {
   return (
-    <>
-      <h1>Unicafe</h1>
+    <div>
+      <h2>Unicafe</h2>
       <Buttons />
+      <h2>statistics</h2>
       <Statistics />
-    </>
+    </div>
   )
 }
 
