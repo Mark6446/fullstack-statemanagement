@@ -27,8 +27,8 @@ export default defineConfig({
       reuseExistingServer: !process.env.CI,
     },
     {
-      command: "npm run server",
-      cwd: "../anecdotes",
+      command: "npx json-server --port 3001 --watch db-test.json",
+      cwd: ".",
       url: "http://localhost:3001/anecdotes",
       reuseExistingServer: !process.env.CI,
     },
