@@ -13,7 +13,7 @@ const Notification = () => {
   if (!notification) return null
 
   return (
-    <div style={style}>
+    <div style={style} data-testid="notification">
       {notification}
     </div>
   )
